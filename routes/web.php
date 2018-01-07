@@ -11,12 +11,29 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', 'SmsController@new');
+/*Route::get('/', function () {
+    return view('welcome');
+});*/
 
+/*Route::get('/hoome', function () {
+    return view('hope');
+});*/
 
 Route::post('/send-sms', [
    'uses'   =>  'SmsController@getUserNumber',
    'as'     =>  'sendSms'
+]);
+
+Route::post('/start', [
+   'uses'   =>  'SmsController@start',
+   'as'     =>  'start'
+]);
+
+Route::post('/verify', [
+   'uses'   =>  'SmsController@verifyOtp',
+   'as'     =>  'verify'
 ]);

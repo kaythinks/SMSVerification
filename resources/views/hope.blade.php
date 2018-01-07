@@ -39,28 +39,27 @@
                 <div class="panel panel-default">
 
                     @if(session()->has('message'))
-                        <div class="alert alert-danger">
+                        <div class="alert alert-success">
                             {{ session()->get('message') }}
                         </div>
-                    @endif
-                    @if ($errors->any())
-                   <div class="alert alert-success">
-                   <p>
-                   @foreach ($errors->all() as $error)
-                    <h1>{{ $error }}</h1>
-                   @endforeach
-                   </p>
-                   </div>
-                   @endif
+                    @elseif(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif    
+
                     <div class="panel-heading">
-                        <h3 class="panel-title">Welcome to my site</h3>
+                        <h3 class="panel-title">Verify your Number</h3>
                     </div>
                     <div class="panel-body">
-                        <form id="myForm" method="POST" action="{{ route('start') }}" role="form">
+                        <form id="myForms" method="POST" action="{{ route('verify') }}" role="form">
                             {{csrf_field()}}
                             <fieldset>
+                           
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Your Phone Number" name="phone_number" type="number" autofocus>
+                                    <input class="form-control" name="phone_number"  value="{{$phone_number}}" />
+                                    <br>
+                                    <input class="form-control" placeholder="Input Your Token" name="otp" type="text" autofocus>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button id="submitBtn" type="submit" class="btn btn-success btn-block">Send Message</button>
