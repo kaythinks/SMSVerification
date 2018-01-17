@@ -12,10 +12,10 @@ use Redirect;
 class SmsController extends Controller
 {
 
-    private $SMS_SENDER = "Shula Media";
+    private $SMS_SENDER = "Code Media";
     private $RESPONSE_TYPE = 'json';
-    private $SMS_USERNAME = 'kaythinks@gmail.com';
-    private $SMS_PASSWORD = 'shariak0';
+    private $SMS_USERNAME = 'insert username';
+    private $SMS_PASSWORD = 'insert password';
 
     public function start(Request $request)
     {
@@ -25,7 +25,7 @@ class SmsController extends Controller
      $phone_number = $request->input('phone_number');
      $otp = rand(100000, 999999);
 
-     $message = "Happy New Year from us at Shula Media. Your OTP is : $otp.";
+     $message = "Happy New Year from us at Code Media. Your OTP is : $otp.";
      $this->initiateSmsActivation($phone_number, $message);
      Session::put('OTP', $otp);
      return view('starts',compact('phone_number'));
